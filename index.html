@@ -102,21 +102,58 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-6" v-if="etapa === 2">
-                <div class="row mt-2">
-                    <div class="col"></div>
-                </div>
-            </div>
-                <div class="row mt-2">
-                    <div class="col d-flex justify-content-end">
-                        <button type="button" class="btn btn-primary" @click="fazerPedido()">
-                            Fazer Pedido
-                        </button>
+                    <div class="row mt-2">
+                        <div class="col d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" @click="fezerPedido">
+                                Fazer Pedido
+                            </button>
+                        </div>
                     </div>
                 </div>
-
+                <div class="col-6" v-if="etapa === 2">
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">Informe Seu Dados</div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Nome</label>
+                                        <input type="text" class="form-control" v-model="inputNome"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Endereço</label>
+                                        <input type="text" class="form-control" v-model="inputEnd"/>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col d-flex justify-content-between">
+                                            <button type="button" class="btn btn-warning" @click="etapa = 1">Voltar para o lanche</button>
+                                            <button type="button" class="btn btn-success" @click="confirmarPedido">Confirmar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6" v-if="etapa === 3">
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">Pedido</div>
+                                <div class="card-body">
+                                    <p>Aguarde em 30 minutos Coce recebe seu Produto!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col d-flex justify-content-between">
+                            <button type="button" class="btn btn-primary" @click="etapa = 1">Refazer Pedido</button>
+                            <button type="button" class="btn btn-success" @click="novoPedido">Novo Pedido</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>

@@ -5,7 +5,10 @@ const vm = new Vue({
         inputSalada:[],
         inputMolho:[],
         inputHamburguer:'',
-        etapa:1
+        etapa:1,
+        inputNome:'',
+        inputEnd:'',
+        novoPedidoAssic:null
     },
     computed:{
         pao() {
@@ -69,7 +72,6 @@ const vm = new Vue({
             
         },
     },
-
         methods:{
            fezerPedido(){
             if(this.inputTipoPao && this.inputHamburguer)
@@ -77,6 +79,29 @@ const vm = new Vue({
             else
                 alert("Seleciono ao menos o pao e o tipo de carne")
 
-           }
+           },
+           confirmarPedido(){
+            if(this.inputNome && this.inputEnd){
+                this.etapa = 3
+                this.novoPedidoAssic = setTimeout(() => this.novoPedido(), 9000)
+             } else{
+                alert("Preenvha os Campos de Eenderço e Nome")
+             }
+           },
+           novoPedido(){
+            this.etapa = 1,
+            this.inputTipoPao='',
+            this.inputSalada=[],
+            this.inputMolho=[],
+            this.inputHamburguer='',
+            this.inputNome='',
+            this.inputEnd=''
+           },
+           watch:{
+                etapa(novoValor){
+                    if(novoValor == 1)
+                        clearTimeout(this.novoPedidoAssic)
+                }
+           },
         },
     });
